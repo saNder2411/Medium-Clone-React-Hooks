@@ -2,24 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import Routes from 'routes';
-import TopBar from 'components/top-bar/top-bar';
+import ServiceContext from 'service-context/service-context';
+import MediumCloneService from 'services/medium-clone-service/medium-clone-service';
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <TopBar />
-        <Routes />
-      </Router>
-    </div>
-  );
-}
+import App from 'components/app/app';
 
+const mediumCloneService = new MediumCloneService();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ServiceContext.Provider value={mediumCloneService}>
+      <Router>
+        <App />
+      </Router>
+    </ServiceContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
