@@ -1,11 +1,10 @@
 import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import Errors from 'components/errors/errors';
-
+import Errors from '../../components/errors/errors';
 
 const LOGIN_PATH = `/login`;
 
-const Auth = ({path, username, email, password, loading, isSuccessfullSubmit, error, setUsername, setEmail, setPassword, onFormSubmit}) => {
+const Auth = ({path, username, email, password, loading, isSuccessFullSubmit, error, setUsername, setEmail, setPassword, onFormSubmit}) => {
   const isLoginPage = path === LOGIN_PATH;
   const titlePage = isLoginPage ? `Sign In` : `Sign Up`;
   const pathLink = isLoginPage ? `/register` : `/login`;
@@ -16,15 +15,15 @@ const Auth = ({path, username, email, password, loading, isSuccessfullSubmit, er
         type="text"
         className="form-control form-control-lg"
         placeholder="Username"
-        autoComplete="username" 
+        autoComplete="username"
         value={username}
         onChange={(evt) => setUsername(evt.target.value)} />
     </fieldset>
   );
   const errorMessage = error ? <Errors errors={error.errors} /> : null;
 
-  if (isSuccessfullSubmit) {
-    return <Redirect to="/" />
+  if (isSuccessFullSubmit) {
+    return <Redirect to="/" />;
   }
 
   return (
@@ -45,7 +44,7 @@ const Auth = ({path, username, email, password, loading, isSuccessfullSubmit, er
                     type="email"
                     className="form-control form-control-lg"
                     placeholder="Email"
-                    autoComplete="username" 
+                    autoComplete="username"
                     value={email}
                     onChange={(evt) => setEmail(evt.target.value)} />
                 </fieldset>

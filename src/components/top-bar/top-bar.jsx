@@ -4,9 +4,9 @@ import {NavLink} from 'react-router-dom';
 const TopBar = () => {
   return (
     <nav className="navbar navbar-light">
-      <div className="cotainer">
+      <div className="container">
         <NavLink to="/" className="navbar-brand">
-          Mudiun
+          Medium
         </NavLink>
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">

@@ -1,12 +1,10 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
+import GlobalFeed from './pages/global-feed/global-feed';
+import Article from './pages/article/article';
+import AuthContainer from './containers/auth-container/auth-container';
 
-import GlobalFeed from 'pages/global-feed/global-feed';
-import Article from 'pages/article/article';
-import AuthContainer from 'containers/auth-container/auth-container';
-
-export default () => {
-
+const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={GlobalFeed} />
@@ -15,4 +13,6 @@ export default () => {
       <Route path="/articles/:slug" component={Article} />
     </Switch>
   );
-}
+};
+
+export default Routes;

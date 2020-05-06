@@ -9,9 +9,7 @@ const Errors = ({errors}) => {
   return (
     <ul className="error-messages">
       {errorMessages.map((errorMessage) => (
-        <li key={errorMessage}>
-          {errorMessage}
-        </li>
+        <li key={errorMessage}>{errorMessage}</li>
       ))}
     </ul>
   );

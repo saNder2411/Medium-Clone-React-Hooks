@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react';
-import useLocalStorage from 'hooks/use-local-storage/use-local-storage';
+import useLocalStorage from '../use-local-storage/use-local-storage';
 
 
-const useSuccessfullSubmit = (data, setCurrentUserState) => {
-  const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false);
+const useSuccessFullSubmit = (data, setCurrentUserState) => {
+  const [isSuccessFullSubmit, setIsSuccessFullSubmit] = useState(false);
   const [, setToken] = useLocalStorage(`token`);
 
   useEffect(() => {
     if (data) {
       setToken(data.user.token);
-      setIsSuccessfullSubmit(true);
+      setIsSuccessFullSubmit(true);
       setCurrentUserState((state) => ({
         ...state,
         loading: false,
@@ -19,7 +19,7 @@ const useSuccessfullSubmit = (data, setCurrentUserState) => {
     }
   }, [data, setToken, setCurrentUserState]);
 
-  return isSuccessfullSubmit;
+  return isSuccessFullSubmit;
 };
 
-export default useSuccessfullSubmit;
+export default useSuccessFullSubmit;

@@ -1,10 +1,8 @@
 import React from 'react';
+import Routes from '../../routes';
+import TopBar from '../top-bar/top-bar';
 
-
-import Routes from 'routes';
-import TopBar from 'components/top-bar/top-bar';
-
-const  App = () => {
+const App = () => {
   return (
     <div className="App">
       <TopBar />
