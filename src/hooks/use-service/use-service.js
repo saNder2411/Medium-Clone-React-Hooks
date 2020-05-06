@@ -17,4 +17,10 @@ const useServiceSetUser = (authConfig) => {
   return useRequest(request);
 };
 
-export {useServiceAuthorizesUser, useServiceSetUser};
+const useServiceGetArticles = () => {
+  const request = useCallback(() => mediumCloneService.getArticles(), []);
+
+  return useRequest(request);
+};
+
+export {useServiceAuthorizesUser, useServiceSetUser, useServiceGetArticles};

@@ -1,0 +1,80 @@
+@keyframes spinner-rings {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
+.spinner-rings div {
+  left: 52.725px;
+  top: 21.645000000000003px;
+  position: absolute;
+  animation: spinner-rings linear 1s infinite;
+  background: #5cb85c;
+  width: 5.550000000000001px;
+  height: 14.430000000000001px;
+  border-radius: 2.7750000000000004px / 7.215000000000001px;
+  transform-origin: 2.7750000000000004px 33.855000000000004px;
+}.spinner-rings div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.9166666666666666s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -0.8333333333333334s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.75s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.6666666666666666s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.5833333333333334s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.5s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.4166666666666667s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.3333333333333333s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.25s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.16666666666666666s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.08333333333333333s;
+  background: #5cb85c;
+}.spinner-rings div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+  background: #5cb85c;
+}
+.spinner {
+  width: 111px;
+  height: 111px;
+  display: block;
+  margin: auto;
+  overflow: hidden;
+  background: none;
+}
+.spinner-rings {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+.spinner-rings div { box-sizing: content-box; }

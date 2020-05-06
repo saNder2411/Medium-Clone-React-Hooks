@@ -4,6 +4,7 @@ import {CurrentUserContext} from '../../contexts/current-user/current-user';
 
 const TopBar = () => {
   const [{loggedIn, currentUser}] = useContext(CurrentUserContext);
+  const userImage = (loggedIn && currentUser.image) || `https://static.productionready.io/images/smiley-cyrus.jpg`;
 
   return (
     <nav className="navbar navbar-light">
@@ -27,7 +28,7 @@ const TopBar = () => {
               </li>
               <li className="nav-item">
                 <NavLink to={`/profiles/${currentUser.username}`} className="nav-link">
-                  <img className="user-pic" src={currentUser.image} alt="avatar"/>
+                  <img className="user-pic" src={userImage} alt="avatar"/>
                   &nbsp; {currentUser.username}
                 </NavLink>
               </li>
