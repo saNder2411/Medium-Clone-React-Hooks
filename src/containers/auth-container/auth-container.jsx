@@ -1,6 +1,6 @@
 import React, {useState, useMemo, useContext} from 'react';
 import Auth from '../../pages/auth/auth';
-import {useAuthorizesUser} from '../../hooks/use-service/use-service';
+import {useServiceAuthorizesUser} from '../../hooks/use-service/use-service';
 import useSuccessFullSubmit from '../../hooks/use-success-full-submit/use-success-full-submit';
 import {CurrentUserContext} from '../../contexts/current-user/current-user';
 
@@ -14,9 +14,9 @@ const AuthContainer = ({match}) => {
     user: {username, email, password},
   }), [username, email, password]);
 
-  const url = useMemo(() => (match.path === `/register` ? `users` : `users/login`), [match.path]);
+  const url = useMemo(() => (match.path === `/register` ? `/users` : `/users/login`), [match.path]);
 
-  const [{loading, data, error}, doRequest] = useAuthorizesUser(url, userData);
+  const [{loading, data, error}, doRequest] = useServiceAuthorizesUser(url, userData);
   const isSuccessFullSubmit = useSuccessFullSubmit(data, setCurrentUserState);
 
   const handleFormSubmit = (evt) => {

@@ -5,10 +5,16 @@ import useRequest from '../use-request/use-request';
 
 const mediumCloneService = new MediumCloneService();
 
-const useAuthorizesUser = (url, userData) => {
+const useServiceAuthorizesUser = (url, userData) => {
   const request = useCallback(() => mediumCloneService.authorizesUser(url, userData), [url, userData]);
 
   return useRequest(request);
 };
 
-export {useAuthorizesUser};
+const useServiceSetUser = (authConfig) => {
+  const request = useCallback(() => mediumCloneService.setUser(authConfig), [authConfig]);
+
+  return useRequest(request);
+};
+
+export {useServiceAuthorizesUser, useServiceSetUser};

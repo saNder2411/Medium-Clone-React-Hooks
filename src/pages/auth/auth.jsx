@@ -20,7 +20,7 @@ const Auth = ({path, username, email, password, loading, isSuccessFullSubmit, er
         onChange={(evt) => setUsername(evt.target.value)} />
     </fieldset>
   );
-  const errorMessage = error ? <Errors errors={error.errors} /> : null;
+  const errorMessage = error ? <Errors errors={error.data.errors} /> : null;
 
   if (isSuccessFullSubmit) {
     return <Redirect to="/" />;

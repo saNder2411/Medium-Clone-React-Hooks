@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 
 
 const useRequest = (request) => {
@@ -12,7 +12,7 @@ const useRequest = (request) => {
     setError(error);
   };
 
-  const doRequest = () => updateState();
+  const doRequest = useCallback(() => updateState(), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -20,7 +20,7 @@ const useRequest = (request) => {
     if (loading) {
       request()
         .then(({data}) => !cancelled && updateState({loading: false, data, error: null}))
-        .catch(({response}) => !cancelled && updateState({loading: false, data: null, error: response.data}));
+        .catch(({response}) => !cancelled && updateState({loading: false, data: null, error: response}));
     }
 
     return () => {
