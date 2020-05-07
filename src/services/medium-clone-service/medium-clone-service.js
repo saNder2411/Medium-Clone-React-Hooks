@@ -39,4 +39,10 @@ export default class MediumCloneService {
 
     return res;
   };
+
+  getTags = async () => {
+    const res = await this._getResource(`/tags`);
+
+    return res;
+  };
 }

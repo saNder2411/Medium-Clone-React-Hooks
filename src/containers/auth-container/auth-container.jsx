@@ -1,10 +1,10 @@
 import React, {useState, useMemo, useContext} from 'react';
 import Auth from '../../pages/auth/auth';
-import {useServiceAuthorizesUser} from '../../hooks/use-service/use-service';
+import useService from '../../hooks/use-service/use-service';
 import useSuccessFullSubmit from '../../hooks/use-success-full-submit/use-success-full-submit';
 import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
-const AuthContainer = ({match}) => {
+const AuthContainer = ({match: {path}}) => {
   const [username, setUsername] = useState(``);
   const [email, setEmail] = useState(``);
   const [password, setPassword] = useState(``);
@@ -14,9 +14,9 @@ const AuthContainer = ({match}) => {
     user: {username, email, password},
   }), [username, email, password]);
 
-  const url = useMemo(() => (match.path === `/register` ? `/users` : `/users/login`), [match.path]);
+  const url = useMemo(() => (path === `/register` ? `/users` : `/users/login`), [path]);
 
-  const [{loading, data, error}, doRequest] = useServiceAuthorizesUser(url, userData);
+  const [{loading, data, error}, doRequest] = useService(`authorizesUser`, url, userData);
   const isSuccessFullSubmit = useSuccessFullSubmit(data, setCurrentUserState);
 
   const handleFormSubmit = (evt) => {
@@ -26,7 +26,7 @@ const AuthContainer = ({match}) => {
 
   return (
     <Auth
-      path={match.path}
+      path={path}
       username={username}
       email={email}
       password={password}

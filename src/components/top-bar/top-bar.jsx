@@ -10,7 +10,7 @@ const TopBar = () => {
     <nav className="navbar navbar-light">
       <div className="container">
         <NavLink to="/" className="navbar-brand">
-          Medium
+          Medium Clone
         </NavLink>
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">

@@ -1,19 +1,19 @@
 import React, {useEffect, Fragment} from 'react';
 import {stringify} from 'query-string';
 
-import {useServiceGetArticles} from '../../hooks/use-service/use-service';
+import useService from '../../hooks/use-service/use-service';
 import {getPagination, LIMIT} from '../../utils/utils';
 
-import Spinner from '../../components/spinner/spinner';
-import Errors from '../../components/errors/errors';
+import ResponseState from '../../components/response-state/response-state';
 import Feed from '../../components/feed/feed';
 import Pagination from '../../components/pagination/pagination';
+import PopularTags from '../../components/popular-tags/popular-tags';
 
 
 const GlobalFeed = ({location: {search}, match: {url}}) => {
   const {currentPage, offset} = getPagination(search);
   const stringifiedUrlParams = stringify({limit: LIMIT, offset});
-  const [{loading, data, error}, doRequest] = useServiceGetArticles(stringifiedUrlParams);
+  const [{loading, data, error}, doRequest] = useService(`getArticles`, stringifiedUrlParams);
   const hasData = !(loading || error) && data;
 
   useEffect(() => doRequest(), [doRequest, stringifiedUrlParams]);
@@ -29,8 +29,7 @@ const GlobalFeed = ({location: {search}, match: {url}}) => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
-            {loading ? <Spinner /> : null}
-            {error ? <Errors errors={error.data.errors} /> : null}
+            <ResponseState loading={loading} error={error} />
             {!hasData ? null : (
               <Fragment>
                 <Feed articles={data.articles} />
@@ -43,7 +42,7 @@ const GlobalFeed = ({location: {search}, match: {url}}) => {
               )}
           </div>
           <div className="col-md-3">
-            Popular tags
+            <PopularTags />
           </div>
         </div>
       </div>
