@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const FeedToggle = ({tagName}) => {
+const FeedToggle = ({tag}) => {
 
   return (
     <div className="feed-toggle">
@@ -16,11 +16,11 @@ const FeedToggle = ({tagName}) => {
             Global feed
           </NavLink>
         </li>
-        {!tagName ? null : (
+        {!tag ? null : (
         <li className="nav-item">
-          <NavLink className="nav-link" to={`/tags/${tagName}`}>
+          <NavLink className="nav-link" to={`/tags/${tag}`}>
             <i className="ion-pound"></i>
-            {tagName}
+            {tag}
           </NavLink>
         </li>)}
       </ul>

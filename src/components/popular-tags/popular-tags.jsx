@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import useService from '../../hooks/use-service/use-service';
-import ResponseState from '../response-state/response-state';
+import LoadingDataView from '../loading-data-view/loading-data-view';
 
 
 const PopularTags = () => {
@@ -14,7 +14,7 @@ const PopularTags = () => {
     <div className="sidebar">
       <p>Popular tags</p>
       <div className="tag-list">
-        <ResponseState loading={loading} error={error} />
+        <LoadingDataView loading={loading} error={error} />
         {!hasData ? null : data.tags.map((tag) => (
           <Link className="tag-default tag-pill" to={`/tags/${tag}`} key={tag}>
             {tag}

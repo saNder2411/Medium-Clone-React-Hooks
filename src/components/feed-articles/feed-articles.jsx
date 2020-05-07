@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Feed = ({articles}) => {
+const FeedArticles = ({articles}) => {
 
   return (
     <div>
@@ -36,4 +36,4 @@ const Feed = ({articles}) => {
   );
 };
 
-export default Feed;
+export default FeedArticles;
