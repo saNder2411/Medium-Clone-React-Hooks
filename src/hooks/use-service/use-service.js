@@ -17,8 +17,8 @@ const useServiceSetUser = (authConfig) => {
   return useRequest(request);
 };
 
-const useServiceGetArticles = () => {
-  const request = useCallback(() => mediumCloneService.getArticles(), []);
+const useServiceGetArticles = (stringifiedUrlParams) => {
+  const request = useCallback(() => mediumCloneService.getArticles(stringifiedUrlParams), [stringifiedUrlParams]);
 
   return useRequest(request);
 };

@@ -2,7 +2,7 @@ import React, {useState, useMemo, useContext} from 'react';
 import Auth from '../../pages/auth/auth';
 import {useServiceAuthorizesUser} from '../../hooks/use-service/use-service';
 import useSuccessFullSubmit from '../../hooks/use-success-full-submit/use-success-full-submit';
-import {CurrentUserContext} from '../../contexts/current-user/current-user';
+import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
 const AuthContainer = ({match}) => {
   const [username, setUsername] = useState(``);

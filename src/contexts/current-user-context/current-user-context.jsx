@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react';
 
-export const CurrentUserContext = createContext([{}, () => {}]);
+const CurrentUserContext = createContext([{}, () => {}]);
 
-export const CurrentUserProvider = ({children}) => {
+const CurrentUserProvider = ({children}) => {
   const [currentUserState, setCurrentUserState] = useState({
     loading: false,
     loggedIn: null,
@@ -15,3 +15,5 @@ export const CurrentUserProvider = ({children}) => {
     </CurrentUserContext.Provider>
   );
 };
+
+export {CurrentUserContext, CurrentUserProvider};

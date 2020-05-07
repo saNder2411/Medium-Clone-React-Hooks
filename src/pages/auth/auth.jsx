@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import Errors from '../../components/errors/errors';
+import {LOGIN_PATH} from '../../utils/utils';
 
-const LOGIN_PATH = `/login`;
 
 const Auth = ({path, username, email, password, loading, isSuccessFullSubmit, error, setUsername, setEmail, setPassword, onFormSubmit}) => {
   const isLoginPage = path === LOGIN_PATH;

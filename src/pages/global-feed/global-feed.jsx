@@ -1,18 +1,22 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, Fragment} from 'react';
+import {stringify} from 'query-string';
+
 import {useServiceGetArticles} from '../../hooks/use-service/use-service';
+import {getPagination, LIMIT} from '../../utils/utils';
+
 import Spinner from '../../components/spinner/spinner';
 import Errors from '../../components/errors/errors';
 import Feed from '../../components/feed/feed';
+import Pagination from '../../components/pagination/pagination';
 
-const GlobalFeed = () => {
-   const [{loading, data, error}, doRequest] = useServiceGetArticles();
 
-   useEffect(() => doRequest(), [doRequest]);
+const GlobalFeed = ({location: {search}, match: {url}}) => {
+  const {currentPage, offset} = getPagination(search);
+  const stringifiedUrlParams = stringify({limit: LIMIT, offset});
+  const [{loading, data, error}, doRequest] = useServiceGetArticles(stringifiedUrlParams);
+  const hasData = !(loading || error) && data;
 
-   const hasData = !(loading || error) && data;
-   const spinner = loading ? <Spinner /> : null;
-   const errorMessage = error ? <Errors errors={error.data.errors} /> : null;
-   const content = hasData ? <Feed articles={data.articles} /> : null;
+  useEffect(() => doRequest(), [doRequest, stringifiedUrlParams]);
 
   return (
     <div className="home-page">
@@ -25,9 +29,18 @@ const GlobalFeed = () => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
-            {spinner}
-            {errorMessage}
-            {content}
+            {loading ? <Spinner /> : null}
+            {error ? <Errors errors={error.data.errors} /> : null}
+            {!hasData ? null : (
+              <Fragment>
+                <Feed articles={data.articles} />
+                <Pagination
+                  url={url}
+                  limit={LIMIT}
+                  total={data.articlesCount}
+                  currentPage={currentPage} />
+              </Fragment>
+              )}
           </div>
           <div className="col-md-3">
             Popular tags

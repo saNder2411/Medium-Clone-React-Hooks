@@ -34,8 +34,8 @@ export default class MediumCloneService {
     return res;
   };
 
-  getArticles = async () => {
-    const res = await this._getResource(`/articles?limit=10&offset=0`);
+  getArticles = async (stringifiedUrlParams) => {
+    const res = await this._getResource(`/articles?${stringifiedUrlParams}`);
 
     return res;
   };
