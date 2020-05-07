@@ -4,6 +4,7 @@ import {stringify} from 'query-string';
 import useService from '../../hooks/use-service/use-service';
 import {getPagination, LIMIT} from '../../utils/utils';
 
+import FeedToggle from '../../components/feed-toggle/feed-toggle';
 import ResponseState from '../../components/response-state/response-state';
 import Feed from '../../components/feed/feed';
 import Pagination from '../../components/pagination/pagination';
@@ -29,6 +30,7 @@ const GlobalFeed = ({location: {search}, match: {url}}) => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
+            <FeedToggle />
             <ResponseState loading={loading} error={error} />
             {!hasData ? null : (
               <Fragment>
