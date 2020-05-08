@@ -12,8 +12,8 @@ const useSuccessFullSubmit = (data, setCurrentUserState) => {
       setIsSuccessFullSubmit(true);
       setCurrentUserState((state) => ({
         ...state,
-        loading: false,
-        loggedIn: true,
+        isLoading: false,
+        isLoggedIn: true,
         currentUser: data.user,
       }));
     }

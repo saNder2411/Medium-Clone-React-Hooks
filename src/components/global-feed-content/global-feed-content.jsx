@@ -9,18 +9,19 @@ import LoadingDataView from '../loading-data-view/loading-data-view';
 import FeedArticles from '../feed-articles/feed-articles';
 import Pagination from '../pagination/pagination';
 
+
 const GlobalFeedContent = ({location: {search}, match: {url}}) => {
   const {currentPage, offset} = getPagination(search);
   const stringifiedUrlParams = stringify({limit: LIMIT, offset});
-  const [{loading, data, error}, doRequest] = useService(`getArticles`, stringifiedUrlParams);
-  const hasData = !(loading || error) && data;
+  const [{isLoading, data, error}, doRequest] = useService(`getAllArticles`, stringifiedUrlParams);
+  const hasData = !(isLoading || error) && data;
 
   useEffect(() => doRequest(), [doRequest, stringifiedUrlParams]);
 
   return (
     <Fragment>
       <FeedToggle />
-      <LoadingDataView loading={loading} error={error} />
+      <LoadingDataView isLoading={isLoading} error={error} />
       {!hasData ? null : (
         <Fragment>
           <FeedArticles articles={data.articles} />

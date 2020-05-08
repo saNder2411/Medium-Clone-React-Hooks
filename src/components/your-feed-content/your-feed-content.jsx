@@ -10,18 +10,17 @@ import FeedArticles from '../feed-articles/feed-articles';
 import Pagination from '../pagination/pagination';
 
 
-const TagFeedContent = ({location: {search}, match: {url, params}}) => {
+const YourFeedContent = ({location: {search}, match: {url}}) => {
   const {currentPage, offset} = getPagination(search);
-  const tag = params.slug;
-  const stringifiedUrlParams = stringify({limit: LIMIT, offset, tag});
-  const [{isLoading, data, error}, doRequest] = useService(`getAllArticles`, stringifiedUrlParams);
+  const stringifiedUrlParams = stringify({limit: LIMIT, offset});
+  const [{isLoading, data, error}, doRequest] = useService(`getUserArticles`, stringifiedUrlParams);
   const hasData = !(isLoading || error) && data;
 
   useEffect(() => doRequest(), [doRequest, stringifiedUrlParams]);
 
   return (
     <Fragment>
-      <FeedToggle tag={tag} />
+      <FeedToggle />
       <LoadingDataView isLoading={isLoading} error={error} />
       {!hasData ? null : (
         <Fragment>
@@ -38,4 +37,4 @@ const TagFeedContent = ({location: {search}, match: {url, params}}) => {
 
 };
 
-export default TagFeedContent;
+export default YourFeedContent;

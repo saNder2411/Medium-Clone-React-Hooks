@@ -1,13 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useContext} from 'react';
+import {NavLink} from 'react-router-dom';
+import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
 const FeedToggle = ({tag}) => {
+  const [{isLoggedIn}] = useContext(CurrentUserContext);
+  const yourFeedLinkPath = isLoggedIn ? `/feed` : `/register`;
 
   return (
     <div className="feed-toggle">
       <ul className="nav nav-pills outline-active">
         <li className="nav-item">
-          <NavLink className="nav-link" to="/feed">
+          <NavLink className="nav-link" to={yourFeedLinkPath}>
             Your feed
           </NavLink>
         </li>

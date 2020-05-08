@@ -16,7 +16,7 @@ const AuthContainer = ({match: {path}}) => {
 
   const url = useMemo(() => (path === `/register` ? `/users` : `/users/login`), [path]);
 
-  const [{loading, data, error}, doRequest] = useService(`authorizesUser`, url, userData);
+  const [{isLoading, data, error}, doRequest] = useService(`authorizesUser`, url, userData);
   const isSuccessFullSubmit = useSuccessFullSubmit(data, setCurrentUserState);
 
   const handleFormSubmit = (evt) => {
@@ -30,7 +30,7 @@ const AuthContainer = ({match: {path}}) => {
       username={username}
       email={email}
       password={password}
-      loading={loading}
+      isLoading={isLoading}
       isSuccessFullSubmit={isSuccessFullSubmit}
       error={error}
       setUsername={setUsername}

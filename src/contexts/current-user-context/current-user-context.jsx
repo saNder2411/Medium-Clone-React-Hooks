@@ -4,8 +4,8 @@ const CurrentUserContext = createContext([{}, () => {}]);
 
 const CurrentUserProvider = ({children}) => {
   const [currentUserState, setCurrentUserState] = useState({
-    loading: false,
-    loggedIn: null,
+    isLoading: false,
+    isLoggedIn: null,
     currentUser: null,
   });
 

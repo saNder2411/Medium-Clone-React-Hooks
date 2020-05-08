@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, memo} from 'react';
 import {Link} from 'react-router-dom';
 import useService from '../../hooks/use-service/use-service';
 import LoadingDataView from '../loading-data-view/loading-data-view';
 
 
 const PopularTags = () => {
-  const [{loading, data, error}, doRequest] = useService(`getTags`);
-  const hasData = !(loading || error) && data;
+  const [{isLoading, data, error}, doRequest] = useService(`getTags`);
+  const hasData = !(isLoading || error) && data;
 
   useEffect(() => doRequest(), [doRequest]);
 
@@ -14,7 +14,7 @@ const PopularTags = () => {
     <div className="sidebar">
       <p>Popular tags</p>
       <div className="tag-list">
-        <LoadingDataView loading={loading} error={error} />
+        <LoadingDataView isLoading={isLoading} error={error} />
         {!hasData ? null : data.tags.map((tag) => (
           <Link className="tag-default tag-pill" to={`/tags/${tag}`} key={tag}>
             {tag}
@@ -25,4 +25,4 @@ const PopularTags = () => {
   );
 };
 
-export default PopularTags;
+export default memo(PopularTags);

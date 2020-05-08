@@ -3,8 +3,8 @@ import {NavLink} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
 const TopBar = () => {
-  const [{loggedIn, currentUser}] = useContext(CurrentUserContext);
-  const userImage = (loggedIn && currentUser.image) || `https://static.productionready.io/images/smiley-cyrus.jpg`;
+  const [{isLoggedIn, currentUser}] = useContext(CurrentUserContext);
+  const userImage = (isLoggedIn && currentUser.image) || `https://static.productionready.io/images/smiley-cyrus.jpg`;
 
   return (
     <nav className="navbar navbar-light">
@@ -18,7 +18,7 @@ const TopBar = () => {
               Home
             </NavLink>
           </li>
-          {loggedIn ? (
+          {isLoggedIn ? (
             <Fragment>
               <li className="nav-item">
                 <NavLink to="/articles/new" className="nav-link">

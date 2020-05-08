@@ -4,7 +4,7 @@ import Errors from '../../components/errors/errors';
 import {LOGIN_PATH} from '../../utils/utils';
 
 
-const Auth = ({path, username, email, password, loading, isSuccessFullSubmit, error, setUsername, setEmail, setPassword, onFormSubmit}) => {
+const Auth = ({path, username, email, password, isLoading, isSuccessFullSubmit, error, setUsername, setEmail, setPassword, onFormSubmit}) => {
   const isLoginPage = path === LOGIN_PATH;
   const titlePage = isLoginPage ? `Sign In` : `Sign Up`;
   const pathLink = isLoginPage ? `/register` : `/login`;
@@ -60,7 +60,7 @@ const Auth = ({path, username, email, password, loading, isSuccessFullSubmit, er
                 <button
                   type="submit"
                   className="btn btn-lg btn-primary pull-xs-right"
-                  disabled={loading}>
+                  disabled={isLoading}>
                   {titlePage}
                 </button>
               </fieldset>

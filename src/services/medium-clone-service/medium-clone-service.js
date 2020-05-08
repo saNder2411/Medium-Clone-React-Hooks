@@ -1,14 +1,11 @@
-import Axios from 'axios';
+import createAPIService from '../create-api-service/create-api-service';
 
 export default class MediumCloneService {
 
   _baseUrl = `https://conduit.productionready.io/api`;
 
-  _API = Axios.create({
-    baseURL: this._baseUrl,
-    timeout: 1000 * 5,
-    withCredentials: true,
-  });
+  _API = createAPIService(this._baseUrl);
+
 
   _postResource = async (url, sendData) => {
     const res = await this._API.post(url, sendData);
@@ -28,14 +25,20 @@ export default class MediumCloneService {
     return res;
   };
 
-  setUser = async (authConfig) => {
-    const res = await this._API(`/user`, authConfig);
+  getUser = async () => {
+    const res = await this._getResource(`/user`);
 
     return res;
   };
 
-  getArticles = async (stringifiedUrlParams) => {
+  getAllArticles = async (stringifiedUrlParams) => {
     const res = await this._getResource(`/articles?${stringifiedUrlParams}`);
+
+    return res;
+  };
+
+  getUserArticles = async (stringifiedUrlParams) => {
+    const res = await this._getResource(`/articles/feed?${stringifiedUrlParams}`);
 
     return res;
   };

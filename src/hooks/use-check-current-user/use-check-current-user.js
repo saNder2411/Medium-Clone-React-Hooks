@@ -3,12 +3,12 @@ import {useEffect} from 'react';
 const useCheckCurrentUser = (token, data, doRequest, setCurrentUserState) => {
   useEffect(() => {
     if (!token) {
-      setCurrentUserState((state) => ({...state, loggedIn: false}));
+      setCurrentUserState((state) => ({...state, isLoggedIn: false}));
       return;
     }
 
     doRequest();
-    setCurrentUserState((state) => ({...state, loading: true}));
+    setCurrentUserState((state) => ({...state, isLoading: true}));
   }, [token, doRequest, setCurrentUserState]);
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const useCheckCurrentUser = (token, data, doRequest, setCurrentUserState) => {
 
     setCurrentUserState((state) => ({
       ...state,
-      loading: false,
-      loggedIn: true,
+      isLoading: false,
+      isLoggedIn: true,
       currentUser: data.user,
     }));
   },[data, setCurrentUserState]);

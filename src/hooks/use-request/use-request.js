@@ -2,12 +2,12 @@ import {useState, useEffect, useCallback} from 'react';
 
 
 const useRequest = (request) => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  const updateState = ({loading = true, data = null, error = null} = {}) => {
-    setLoading(loading);
+  const updateState = ({isLoading = true, data = null, error = null} = {}) => {
+    setLoading(isLoading);
     setData(data);
     setError(error);
   };
@@ -17,18 +17,18 @@ const useRequest = (request) => {
   useEffect(() => {
     let cancelled = false;
 
-    if (loading) {
+    if (isLoading) {
       request()
-        .then(({data}) => !cancelled && updateState({loading: false, data, error: null}))
-        .catch(({response}) => !cancelled && updateState({loading: false, data: null, error: response}));
+        .then(({data}) => !cancelled && updateState({isLoading: false, data, error: null}))
+        .catch(({response}) => !cancelled && updateState({isLoading: false, data: null, error: response}));
     }
 
     return () => {
       cancelled = true;
     };
-  }, [loading, request]);
+  }, [isLoading, request]);
 
-  return [{loading, data, error}, doRequest];
+  return [{isLoading, data, error}, doRequest];
 };
 
 export default useRequest;
