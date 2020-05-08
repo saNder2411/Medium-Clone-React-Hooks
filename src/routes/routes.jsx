@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import GlobalFeed from '../pages/global-feed/global-feed';
-import Article from '../pages/article/article';
 import AuthContainer from '../containers/auth-container/auth-container';
+import ArticleContainer from '../containers/article-container/article-container';
 
 const Routes = () => {
   return (
@@ -12,7 +12,7 @@ const Routes = () => {
       <Route path="/tags/:slug" component={GlobalFeed} />
       <Route path="/login" component={AuthContainer} />
       <Route path="/register" component={AuthContainer} />
-      <Route path="/articles/:slug" component={Article} />
+      <Route path="/articles/:slug" component={ArticleContainer} />
     </Switch>
   );
 };

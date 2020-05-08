@@ -1,16 +1,19 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useReducer} from 'react';
+import currentUserReducer from './current-user-reducer';
 
-const CurrentUserContext = createContext([{}, () => {}]);
+const initialState = {
+  isLoading: false,
+  isLoggedIn: null,
+  currentUser: null,
+};
+
+const CurrentUserContext = createContext();
 
 const CurrentUserProvider = ({children}) => {
-  const [currentUserState, setCurrentUserState] = useState({
-    isLoading: false,
-    isLoggedIn: null,
-    currentUser: null,
-  });
+  const value = useReducer(currentUserReducer, initialState);
 
   return (
-    <CurrentUserContext.Provider value={[currentUserState, setCurrentUserState]}>
+    <CurrentUserContext.Provider value={value}>
       {children}
     </CurrentUserContext.Provider>
   );

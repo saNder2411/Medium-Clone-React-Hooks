@@ -1,28 +1,26 @@
-import {useEffect} from 'react';
+import {useEffect, useContext} from 'react';
+import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
+import {currentUserRequest, currentUserAuthorized, currentUserUnauthorized} from '../../contexts/current-user-context/current-user-action-creator';
 
-const useCheckCurrentUser = (token, data, doRequest, setCurrentUserState) => {
+const useCheckCurrentUser = (token, data, doRequest) => {
+  const [, dispatch] = useContext(CurrentUserContext);
   useEffect(() => {
     if (!token) {
-      setCurrentUserState((state) => ({...state, isLoggedIn: false}));
+      dispatch(currentUserUnauthorized())
       return;
     }
 
     doRequest();
-    setCurrentUserState((state) => ({...state, isLoading: true}));
-  }, [token, doRequest, setCurrentUserState]);
+    dispatch(currentUserRequest());
+  }, [token, doRequest, dispatch]);
 
   useEffect(() => {
     if (!data) {
       return;
     }
 
-    setCurrentUserState((state) => ({
-      ...state,
-      isLoading: false,
-      isLoggedIn: true,
-      currentUser: data.user,
-    }));
-  },[data, setCurrentUserState]);
+    dispatch(currentUserAuthorized(data.user));
+  },[data, dispatch]);
 
 };
 

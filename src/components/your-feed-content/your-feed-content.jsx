@@ -4,7 +4,7 @@ import {stringify} from 'query-string';
 import useService from '../../hooks/use-service/use-service';
 import {getPagination, LIMIT} from '../../utils/utils';
 
-import FeedToggle from '../../components/feed-toggle/feed-toggle';
+import FeedToggle from '../feed-toggle/feed-toggle';
 import LoadingDataView from '../loading-data-view/loading-data-view';
 import FeedArticles from '../feed-articles/feed-articles';
 import Pagination from '../pagination/pagination';
