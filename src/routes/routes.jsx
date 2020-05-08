@@ -3,6 +3,8 @@ import {Route, Switch} from 'react-router-dom';
 import GlobalFeed from '../pages/global-feed/global-feed';
 import AuthContainer from '../containers/auth-container/auth-container';
 import ArticleContainer from '../containers/article-container/article-container';
+import CreateArticle from '../pages/create-article/create-article';
+import EditArticle from '../pages/edit-article/edit-article';
 
 const Routes = () => {
   return (
@@ -13,6 +15,8 @@ const Routes = () => {
       <Route path="/login" component={AuthContainer} />
       <Route path="/register" component={AuthContainer} />
       <Route path="/articles/:slug" component={ArticleContainer} />
+      <Route path="/article/new" component={CreateArticle} />
+      <Route path="/article/edit" component={EditArticle} />
     </Switch>
   );
 };
