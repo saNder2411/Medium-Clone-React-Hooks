@@ -31,6 +31,12 @@ export default class MediumCloneService {
     return res;
   };
 
+  getTags = async () => {
+    const res = await this._getResource(`/tags`);
+
+    return res;
+  };
+
   getAllArticles = async (stringifiedUrlParams) => {
     const res = await this._getResource(`/articles?${stringifiedUrlParams}`);
 
@@ -43,8 +49,8 @@ export default class MediumCloneService {
     return res;
   };
 
-  getTags = async () => {
-    const res = await this._getResource(`/tags`);
+  getArticle = async (urlSlug) => {
+    const res = await this._getResource(`/articles/${urlSlug}`);
 
     return res;
   };
