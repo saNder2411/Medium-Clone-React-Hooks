@@ -8,13 +8,13 @@ const useAuthConfig = (token) => {
   });
 
   useEffect(() => {
-    if (token) {
-      setAuthConfig({
-        headers: {
-          authorization: `Token ${token}`,
-        },
-      });
-    }
+    if (!token) return;
+
+    setAuthConfig({
+      headers: {
+        authorization: `Token ${token}`,
+      },
+    });
   }, [token])
 
   return [authConfig];

@@ -10,11 +10,11 @@ const useSuccessFullSubmit = (data) => {
   const [, dispatch] = useContext(CurrentUserContext);
 
   useEffect(() => {
-    if (data) {
-      setToken(data.user.token);
-      setIsSuccessFullSubmit(true);
-      dispatch(currentUserAuthorized(data.user));
-    }
+    if (!data) return;
+
+    setToken(data.user.token);
+    setIsSuccessFullSubmit(true);
+    dispatch(currentUserAuthorized(data.user));
   }, [data, setToken, dispatch]);
 
   return isSuccessFullSubmit;

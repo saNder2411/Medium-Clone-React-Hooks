@@ -54,4 +54,10 @@ export default class MediumCloneService {
 
     return res;
   };
+
+  postUserArticle = async (articleData) => {
+    const res = await this._postResource(`/articles`, articleData);
+
+    return res;
+  }; 
 }

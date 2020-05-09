@@ -15,9 +15,7 @@ const useCheckCurrentUser = (token, data, doRequest) => {
   }, [token, doRequest, dispatch]);
 
   useEffect(() => {
-    if (!data) {
-      return;
-    }
+    if (!data) return;
 
     dispatch(currentUserAuthorized(data.user));
   },[data, dispatch]);

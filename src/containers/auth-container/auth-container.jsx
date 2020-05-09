@@ -31,9 +31,9 @@ const AuthContainer = ({match: {path}}) => {
       isLoading={isLoading}
       isSuccessFullSubmit={isSuccessFullSubmit}
       error={error}
-      setUsername={setUsername}
-      setEmail={setEmail}
-      setPassword={setPassword}
+      onUsernameChange={setUsername}
+      onEmailChange={setEmail}
+      onPasswordChange={setPassword}
       onFormSubmit={handleFormSubmit}
     />
   );

@@ -4,7 +4,10 @@ import Errors from '../../components/errors/errors';
 import {LOGIN_PATH} from '../../utils/utils';
 
 
-const Auth = ({path, username, email, password, isLoading, isSuccessFullSubmit, error, setUsername, setEmail, setPassword, onFormSubmit}) => {
+const Auth = (props) => {
+  const {path, username, email, password, isLoading, isSuccessFullSubmit, error,
+    onUsernameChange, onEmailChange, onPasswordChange, onFormSubmit} = props;
+
   const isLoginPage = path === LOGIN_PATH;
   const titlePage = isLoginPage ? `Sign In` : `Sign Up`;
   const pathLink = isLoginPage ? `/register` : `/login`;
@@ -17,7 +20,7 @@ const Auth = ({path, username, email, password, isLoading, isSuccessFullSubmit, 
         placeholder="Username"
         autoComplete="username"
         value={username}
-        onChange={(evt) => setUsername(evt.target.value)} />
+        onChange={(evt) => onUsernameChange(evt.target.value)} />
     </fieldset>
   );
   const errorMessage = error ? <Errors errors={error.data.errors} /> : null;
@@ -46,7 +49,7 @@ const Auth = ({path, username, email, password, isLoading, isSuccessFullSubmit, 
                     placeholder="Email"
                     autoComplete="username"
                     value={email}
-                    onChange={(evt) => setEmail(evt.target.value)} />
+                    onChange={(evt) => onEmailChange(evt.target.value)} />
                 </fieldset>
                 <fieldset className="form-group">
                   <input
@@ -55,7 +58,7 @@ const Auth = ({path, username, email, password, isLoading, isSuccessFullSubmit, 
                     placeholder="Password"
                     autoComplete="current-password"
                     value={password}
-                    onChange={(evt) => setPassword(evt.target.value)} />
+                    onChange={(evt) => onPasswordChange(evt.target.value)} />
                 </fieldset>
                 <button
                   type="submit"
