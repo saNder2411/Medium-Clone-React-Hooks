@@ -14,9 +14,9 @@ const Routes = () => {
       <Route path="/tags/:slug" component={GlobalFeed} />
       <Route path="/login" component={AuthContainer} />
       <Route path="/register" component={AuthContainer} />
-      <Route path="/articles/:slug" component={ArticleContainer} />
-      <Route path="/article/new" component={CreateArticle} />
-      <Route path="/article/edit" component={EditArticle} />
+      <Route exact path="/article/new" component={CreateArticle} />
+      <Route exact path="/article/:slug" component={ArticleContainer} />
+      <Route path="/article/:slug/edit" component={EditArticle} />
     </Switch>
   );
 };

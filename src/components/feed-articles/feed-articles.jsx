@@ -19,7 +19,7 @@ const FeedArticles = ({articles}) => {
               <span className="date">{createdAt}</span>
             </div>
           </div>
-          <Link className="preview-link" to={`/articles/${slug}`}>
+          <Link className="preview-link" to={`/article/${slug}`}>
             <h1>{title}</h1>
             <p>{description}</p>
             <span>Read more...</span>

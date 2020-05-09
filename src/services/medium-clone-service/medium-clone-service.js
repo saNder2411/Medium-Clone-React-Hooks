@@ -60,4 +60,10 @@ export default class MediumCloneService {
 
     return res;
   }; 
+
+  updateUserArticle = async (urlSlug, updatedArticleData) => {
+    const res = await this._API.put(`/articles/${urlSlug}`, updatedArticleData);
+
+    return res;
+  };
 }

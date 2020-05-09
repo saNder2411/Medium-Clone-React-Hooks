@@ -5,7 +5,7 @@ import Article from '../../pages/article/article';
 
 
 const ArticleContainer = ({match: {params}}) => {
-  const urlSlug = params.slug
+  const {slug: urlSlug} = params;
   const [{isLoading, data, error}, doRequest] = useService(`getArticle`, urlSlug);
   const hasData = !(isLoading || error) && data;
 

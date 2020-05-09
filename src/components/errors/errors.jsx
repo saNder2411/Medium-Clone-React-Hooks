@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Errors = ({errors}) => {
-  const errorMessages = Object.keys(errors).map((name) => {
+  const errorMessages = Object.keys(errors || {}).map((name) => {
     const messages = errors[name].join(` `);
     return `${name} ${messages}`;
   });

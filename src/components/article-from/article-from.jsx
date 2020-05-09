@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Errors from '../errors/errors';
 
 
-const ArticleForm = ({isLoading, error, initialValues, requestToAddArticle}) => {
+const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
   const [title, setTitle] = useState(``);
   const [body, setBody] = useState(``);
   const [description, setDescription] = useState(``);
@@ -11,7 +11,7 @@ const ArticleForm = ({isLoading, error, initialValues, requestToAddArticle}) => 
   useEffect(() => {
     if (!initialValues) return;
 
-    const {title, description, body, tagList} = initialValues
+    const {title, description, body, tagList} = initialValues;
     setTitle(title);
     setBody(body);
     setDescription(description);
@@ -22,7 +22,7 @@ const ArticleForm = ({isLoading, error, initialValues, requestToAddArticle}) => 
   const handelFormSubmit = (evt) => {
     evt.preventDefault();
     const article = {title, description, body, tagList}
-    requestToAddArticle(article);
+    onFormSubmit(article);
   };
 
   const errorMessage = error ? <Errors errors={error.data.errors} /> : null;

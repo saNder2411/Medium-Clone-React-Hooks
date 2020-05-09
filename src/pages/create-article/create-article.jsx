@@ -16,7 +16,7 @@ const CreateArticle = () => {
   const [articleData, setArticleData] = useState(initialValues);
   const [isSuccessFullSubmit, setIsSuccessFullSubmit] = useState(false);
   const [{isLoggedIn}] = useContext(CurrentUserContext);
-  const [{isLoading,data, error}, doRequest] = useService(`postUserArticle`, articleData);
+  const [{isLoading, data, error}, doRequest] = useService(`postUserArticle`, articleData);
 
   useEffect(() => {
     if (!data) return;
@@ -31,20 +31,19 @@ const CreateArticle = () => {
   };
 
   if (isLoggedIn === false) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   if (isSuccessFullSubmit) {
-    return <Redirect to={`/articles/${data.article.slug}`} />;
+    return <Redirect to={`/article/${data.article.slug}`} />;
   }
 
-
   return (
-      <ArticleForm
-        isLoading={isLoading}
-        error={error}
-        initialValues={initialValues}
-        requestToAddArticle={requestToAddArticle} />
+    <ArticleForm
+      isLoading={isLoading}
+      error={error}
+      initialValues={initialValues}
+      onFormSubmit={requestToAddArticle} />
   );
 };
 
