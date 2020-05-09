@@ -8,3 +8,5 @@ export const currentUserAuthorized = (user) => ({
 });
 
 export const currentUserUnauthorized = () => ({type: CurrentUserActionTypes.FETCH_USER_UNAUTHORIZED});
+
+export const currentUserLogout = () => ({type: CurrentUserActionTypes.USER_LOGOUT});

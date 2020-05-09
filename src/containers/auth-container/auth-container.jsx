@@ -1,16 +1,15 @@
 import React, {useState, useMemo} from 'react';
+import {Redirect} from 'react-router-dom';
 import Auth from '../../pages/auth/auth';
 import useService from '../../hooks/use-service/use-service';
 import useSuccessFullSubmit from '../../hooks/use-success-full-submit/use-success-full-submit';
+
 
 const AuthContainer = ({match: {path}}) => {
   const [username, setUsername] = useState(``);
   const [email, setEmail] = useState(``);
   const [password, setPassword] = useState(``);
-
-  const userData = useMemo(() => ({
-    user: {username, email, password},
-  }), [username, email, password]);
+  const [userData, setUserData] = useState(null);
 
   const url = useMemo(() => (path === `/register` ? `/users` : `/users/login`), [path]);
 
@@ -19,8 +18,15 @@ const AuthContainer = ({match: {path}}) => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
+    setUserData({
+      user: {username, email, password},
+    });
     doRequest();
   };
+
+  if (isSuccessFullSubmit) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Auth
@@ -29,7 +35,6 @@ const AuthContainer = ({match: {path}}) => {
       email={email}
       password={password}
       isLoading={isLoading}
-      isSuccessFullSubmit={isSuccessFullSubmit}
       error={error}
       onUsernameChange={setUsername}
       onEmailChange={setEmail}

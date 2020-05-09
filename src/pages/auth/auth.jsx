@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Errors from '../../components/errors/errors';
 import {LOGIN_PATH} from '../../utils/utils';
 
 
 const Auth = (props) => {
-  const {path, username, email, password, isLoading, isSuccessFullSubmit, error,
+  const {path, username, email, password, isLoading, error,
     onUsernameChange, onEmailChange, onPasswordChange, onFormSubmit} = props;
 
   const isLoginPage = path === LOGIN_PATH;
@@ -25,10 +25,6 @@ const Auth = (props) => {
   );
   const errorMessage = error ? <Errors errors={error.data.errors} /> : null;
 
-  if (isSuccessFullSubmit) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <div className="auth-page">
       <div className="container page">
@@ -47,7 +43,7 @@ const Auth = (props) => {
                     type="email"
                     className="form-control form-control-lg"
                     placeholder="Email"
-                    autoComplete="username"
+                    autoComplete="email"
                     value={email}
                     onChange={(evt) => onEmailChange(evt.target.value)} />
                 </fieldset>

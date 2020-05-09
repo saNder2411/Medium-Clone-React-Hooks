@@ -37,6 +37,12 @@ export default class MediumCloneService {
     return res;
   };
 
+  updateUserData = async (updatedData) => {
+    const res = await this._putResource(`/user`, updatedData);
+
+    return res;
+  };
+
   getTags = async () => {
     const res = await this._getResource(`/tags`);
 

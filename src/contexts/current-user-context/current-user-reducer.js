@@ -18,6 +18,14 @@ const currentUserReducer = (state, action) => {
     case CurrentUserActionTypes.FETCH_USER_UNAUTHORIZED:
       return {...state, isLoggedIn: false};
 
+    case CurrentUserActionTypes.USER_LOGOUT:
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        currentUser: null,
+      };
+
     default:
       return state;
   }
