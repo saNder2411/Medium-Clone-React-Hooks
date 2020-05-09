@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import TagList from '../tag-list/tag-list';
+import {parseDateToString} from '../../utils/utils';
 
 const FeedArticles = ({articles}) => {
 
@@ -16,7 +17,7 @@ const FeedArticles = ({articles}) => {
               <Link className="author" to={`/profiles/${author.username}`}>
                 {author.username}
               </Link>
-              <span className="date">{createdAt}</span>
+              <span className="date">{parseDateToString(createdAt)}</span>
             </div>
           </div>
           <Link className="preview-link" to={`/article/${slug}`}>

@@ -7,14 +7,20 @@ export default class MediumCloneService {
   _API = createAPIService(this._baseUrl);
 
 
+  _getResource = async (url) => {
+    const res = await this._API.get(url);
+
+    return res;
+  };
+
   _postResource = async (url, sendData) => {
     const res = await this._API.post(url, sendData);
 
     return res;
   };
 
-  _getResource = async (url) => {
-    const res = await this._API.get(url);
+  _putResource = async (url, sendData) => {
+    const res = await this._API.put(url, sendData);
 
     return res;
   };
@@ -62,7 +68,13 @@ export default class MediumCloneService {
   }; 
 
   updateUserArticle = async (urlSlug, updatedArticleData) => {
-    const res = await this._API.put(`/articles/${urlSlug}`, updatedArticleData);
+    const res = await this._putResource(`/articles/${urlSlug}`, updatedArticleData);
+
+    return res;
+  };
+
+  deleteUserArticle = async (urlSlug) => {
+    const res = await this._API.delete(`/articles/${urlSlug}`);
 
     return res;
   };
