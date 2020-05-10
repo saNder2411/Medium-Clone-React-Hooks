@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {NavLink} from 'react-router-dom';
+import UserArticles from '../user-articles/user-articles';
 
 
 const UserProfileContent = ({image, username, bio}) => {
@@ -34,7 +35,7 @@ const UserProfileContent = ({image, username, bio}) => {
                 </li>
               </ul>
             </div>
-            user Article
+            <UserArticles username={username} />
           </div>
         </div>
       </div>
