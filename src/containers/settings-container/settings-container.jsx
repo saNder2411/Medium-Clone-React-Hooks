@@ -61,17 +61,17 @@ const SettingsContainer = () => {
 
   return !currentUser ? null : (
     <Settings
+      isLoading={isLoading}
       error={error}
       image={image}
-      username={username}
-      bio={bio}
-      email={email}
-      password={password}
-      isLoading={isLoading}
       setImage={setImage}
+      username={username}
       setUsername={setUsername}
+      bio={bio}
       setBio={setBio}
+      email={email}
       setEmail={setEmail}
+      password={password}
       setPassword={setPassword}
       onFormSubmit={handelFormSubmit}
       onButtonLogoutClick={handleButtonLogoutClick} />

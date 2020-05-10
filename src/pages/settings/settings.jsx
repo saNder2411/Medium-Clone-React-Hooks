@@ -3,8 +3,8 @@ import Errors from '../../components/errors/errors';
 
 
 const Settings = (props) => {
-  const {error, image, username, bio, email, password, isLoading, setImage,
-    setUsername, setBio, setEmail, setPassword, onFormSubmit, onButtonLogoutClick} = props;
+  const {isLoading, error, image, setImage, username, setUsername, bio, setBio,
+    email, setEmail, password, setPassword, onFormSubmit, onButtonLogoutClick} = props;
 
   return (
     <div className="settings-page">

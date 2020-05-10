@@ -25,6 +25,12 @@ export default class MediumCloneService {
     return res;
   };
 
+  _deleteResource = async (url) => {
+    const res = await this._API.delete(url);
+
+    return res;
+  };
+
   authorizesUser = async (url, userAuthData) => {
     const res = await this._postResource(url, userAuthData);
 
@@ -81,6 +87,18 @@ export default class MediumCloneService {
 
   deleteUserArticle = async (urlSlug) => {
     const res = await this._API.delete(`/articles/${urlSlug}`);
+
+    return res;
+  };
+
+  addToFavoriteArticle = async (articleSlug) => {
+    const res =  await this._postResource(`/articles/${articleSlug}/favorite`);
+
+    return res;
+  };
+
+  deleteOffFavoriteArticle = async (articleSlug) => {
+    const res =  await this._deleteResource(`/articles/${articleSlug}/favorite`);
 
     return res;
   };
