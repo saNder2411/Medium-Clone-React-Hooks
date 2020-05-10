@@ -6,6 +6,7 @@ import ArticleContainer from '../containers/article-container/article-container'
 import CreateArticle from '../pages/create-article/create-article';
 import EditArticle from '../pages/edit-article/edit-article';
 import SettingsContainer from '../containers/settings-container/settings-container';
+import UserProfile from '../pages/user-profile/user-profile';
 
 const Routes = () => {
   return (
@@ -14,6 +15,8 @@ const Routes = () => {
       <Route path="/feed" component={GlobalFeed} />
       <Route path="/tags/:slug" component={GlobalFeed} />
       <Route path="/settings" component={SettingsContainer} />
+      <Route path="/profiles/:slug" component={UserProfile} />
+      <Route path="/profiles/:slug/favorites" component={UserProfile} />
       <Route path="/login" component={AuthContainer} />
       <Route path="/register" component={AuthContainer} />
       <Route exact path="/article/new" component={CreateArticle} />

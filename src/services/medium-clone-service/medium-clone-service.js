@@ -37,7 +37,7 @@ export default class MediumCloneService {
     return res;
   };
 
-  getUser = async () => {
+  getCurrentUser = async () => {
     const res = await this._getResource(`/user`);
 
     return res;
@@ -45,6 +45,12 @@ export default class MediumCloneService {
 
   updateUserData = async (updatedData) => {
     const res = await this._putResource(`/user`, updatedData);
+
+    return res;
+  };
+
+  getUserProfiles = async (urlSlug) => {
+    const res = await this._getResource(`/profiles/${urlSlug}`);
 
     return res;
   };
