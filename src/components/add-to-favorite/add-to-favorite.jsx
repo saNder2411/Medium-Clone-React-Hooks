@@ -3,38 +3,32 @@ import classNames from 'classnames';
 import useService from '../../hooks/use-service/use-service';
 
 const AddToFavorite = ({isFavorite, favoritesCount, articleSlug}) => {
-  const [{isLoading: addLoading, data: addToData}, doRequestAddToFavorite] = useService(`addToFavoriteArticle`, articleSlug);
-  const [{isLoading: deleteLoading,data: deleteOffData}, doRequestDeleteOffFavorite] = useService(`deleteOffFavoriteArticle`, articleSlug);
   const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
   const [favoritesCountState, setFavoritesCountState] = useState(favoritesCount);
-  const response = isFavoriteState ? addToData : deleteOffData;
+  const serviceMethod = isFavoriteState ? `deleteOffFavoriteArticle` : `addToFavoriteArticle`;
+
+  const [{isLoading, data}, doRequest] = useService(serviceMethod, articleSlug);
   const buttonClasses = classNames({
-    "btn": true,
-    "btn-sm": true,
-    "btn-primary": isFavoriteState,
-    "btn-outline-primary": !isFavoriteState,
+    'btn': true,
+    'btn-sm': true,
+    'btn-primary': isFavoriteState,
+    'btn-outline-primary': !isFavoriteState,
   });
 
-  useEffect(()=> {
-    if (!response) return;
+  useEffect(() => {
+    if (!data) return;
 
-    setFavoritesCountState(response.article.favoritesCount);
-  }, [response])
-
-  const handleLike = () => {
-    if (isFavoriteState) {
-      doRequestDeleteOffFavorite();
-      setIsFavoriteState(false);
-    } else {
-      doRequestAddToFavorite();
-      setIsFavoriteState(true);
-    }
-  };
+    setFavoritesCountState(data.article.favoritesCount);
+    setIsFavoriteState(data.article.favorited);
+  }, [data]);
 
   return (
-    <button className={buttonClasses} onClick={handleLike} disabled={addLoading || deleteLoading}>
-      <i className="ion-heart"></i>
-      <span>&nbsp; {favoritesCountState}</span>
+    <button className={buttonClasses} type="button" onClick={doRequest} disabled={isLoading}>
+      <i className="ion-heart" />
+      <span>
+        &nbsp;
+        {favoritesCountState}
+      </span>
     </button>
   );
 };

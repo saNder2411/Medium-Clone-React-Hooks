@@ -1,0 +1,28 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - airbnb
+  - airbnb/hooks
+  - react-app
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2018
+  sourceType: module
+plugins:
+  - react
+rules:
+  react/prop-types: 0
+  no-underscore-dangle: 0
+  quotes: ["error", "backtick"]
+  object-curly-spacing: ["error", "never"]
+  quote-props: ["error", "consistent"]
+  max-len: ["error", { "code": 120 }]
+  object-curly-newline: ["error", { "consistent": true }]
+  react/jsx-closing-bracket-location: [0, 'props-aligned']
+
+

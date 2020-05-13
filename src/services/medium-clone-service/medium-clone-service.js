@@ -1,11 +1,9 @@
 import createAPIService from '../create-api-service/create-api-service';
 
 export default class MediumCloneService {
-
   _baseUrl = `https://conduit.productionready.io/api`;
 
   _API = createAPIService(this._baseUrl);
-
 
   _getResource = async (url) => {
     const res = await this._API.get(url);
@@ -83,7 +81,7 @@ export default class MediumCloneService {
     const res = await this._postResource(`/articles`, articleData);
 
     return res;
-  }; 
+  };
 
   updateUserArticle = async (urlSlug, updatedArticleData) => {
     const res = await this._putResource(`/articles/${urlSlug}`, updatedArticleData);
@@ -98,13 +96,13 @@ export default class MediumCloneService {
   };
 
   addToFavoriteArticle = async (articleSlug) => {
-    const res =  await this._postResource(`/articles/${articleSlug}/favorite`);
+    const res = await this._postResource(`/articles/${articleSlug}/favorite`);
 
     return res;
   };
 
   deleteOffFavoriteArticle = async (articleSlug) => {
-    const res =  await this._deleteResource(`/articles/${articleSlug}/favorite`);
+    const res = await this._deleteResource(`/articles/${articleSlug}/favorite`);
 
     return res;
   };
