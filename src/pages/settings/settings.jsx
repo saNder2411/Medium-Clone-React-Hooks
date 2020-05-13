@@ -37,8 +37,7 @@ const Settings = (props) => {
                     rows="8"
                     placeholder="Short bio"
                     value={bio}
-                    onChange={(evt) => setBio(evt.target.value)}>
-                  </textarea>
+                    onChange={(evt) => setBio(evt.target.value)} />
                 </fieldset>
                 <fieldset className="form-group">
                   <input
@@ -66,8 +65,8 @@ const Settings = (props) => {
                 </button>
               </fieldset>
             </form>
-            <hr/>
-            <button className="btn btn-outline-danger" onClick={onButtonLogoutClick}>
+            <hr />
+            <button className="btn btn-outline-danger" type="button" onClick={onButtonLogoutClick}>
               Or click here to logout
             </button>
           </div>
@@ -77,4 +76,4 @@ const Settings = (props) => {
   );
 };
 
-export default Settings; 
+export default Settings;

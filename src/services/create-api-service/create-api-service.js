@@ -6,7 +6,7 @@ const createAPIService = (baseURL) => {
     timeout: 1000 * 10,
     withCredentials: true,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': `application/json`,
     },
   };
 
@@ -14,9 +14,15 @@ const createAPIService = (baseURL) => {
 
   instanceAPI.interceptors.request.use((config) => {
     const token = localStorage.getItem(`token`);
-    config.headers.authorization = token ? `Token ${token}` : ``;
+    const newConfig = {
+      ...config,
+      headers: {
+        ...config.headers,
+        authorization: token ? `Token ${token}` : ``,
+      },
+    };
 
-    return config;
+    return newConfig;
   });
 
   return instanceAPI;

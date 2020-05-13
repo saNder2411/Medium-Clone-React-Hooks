@@ -14,5 +14,5 @@ ReactDOM.render(
       </Router>
     </CurrentUserChecker>
   </CurrentUserProvider>,
-  document.getElementById(`root`)
+  document.getElementById(`root`),
 );

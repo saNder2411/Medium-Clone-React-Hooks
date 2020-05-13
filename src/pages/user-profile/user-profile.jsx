@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import useService from '../../hooks/use-service/use-service';
 import LoadingDataView from '../../components/loading-data-view/loading-data-view';
 import UserProfileContent from '../../components/user-profile-content/user-profile-content';
@@ -17,7 +17,8 @@ const UserProfile = ({match: {params}}) => {
         <UserProfileContent
           image={image}
           username={username}
-          bio={bio} />)}
+          bio={bio} />
+      )}
     </div>
   );
 };

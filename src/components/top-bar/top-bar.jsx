@@ -1,4 +1,4 @@
-import React, {useContext, Fragment} from 'react';
+import React, {useContext} from 'react';
 import {NavLink} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
@@ -19,28 +19,30 @@ const TopBar = () => {
             </NavLink>
           </li>
           {isLoggedIn ? (
-            <Fragment>
+            <>
               <li className="nav-item">
                 <NavLink to="/article/new" className="nav-link">
-                  <i className="ion-compose"></i>
+                  <i className="ion-compose" />
                   &nbsp; New Post
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/settings" className="nav-link">
-                  <i className="ion-gear-a"></i>
+                  <i className="ion-gear-a" />
                   &nbsp; Settings
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to={`/profiles/${currentUser.username}`} className="nav-link">
-                  <img className="user-pic" src={userImage} alt="avatar"/>
-                  &nbsp; {currentUser.username}
+                  <img className="user-pic" src={userImage} alt="avatar" />
+                  &nbsp;
+                  {` `}
+                  {currentUser.username}
                 </NavLink>
               </li>
-            </Fragment>
+            </>
           ) : (
-            <Fragment>
+            <>
               <li className="nav-item">
                 <NavLink to="/login" className="nav-link">
                   Sign in
@@ -51,7 +53,7 @@ const TopBar = () => {
                   Sign up
                 </NavLink>
               </li>
-            </Fragment>
+            </>
           )}
         </ul>
       </div>

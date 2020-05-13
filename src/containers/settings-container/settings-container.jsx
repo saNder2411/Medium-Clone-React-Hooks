@@ -11,11 +11,11 @@ import Settings from '../../pages/settings/settings';
 
 const SettingsContainer = () => {
   const [{currentUser}, dispatch] = useContext(CurrentUserContext);
-  const [image, setImage] = useState(``);
-  const [username, setUsername] = useState(``);
-  const [bio, setBio] = useState(``);
-  const [email, setEmail] = useState(``);
-  const [password, setPassword] = useState(``);
+  const [imageState, setImageState] = useState(``);
+  const [usernameState, setUsernameState] = useState(``);
+  const [bioState, setBioState] = useState(``);
+  const [emailState, setEmailState] = useState(``);
+  const [passwordState, setPasswordState] = useState(``);
   const [updatedUserData, setUpdatedUserData] = useState(null);
   const [{isLoading, data, error}, doRequest] = useService(`updateUserData`, updatedUserData);
 
@@ -27,10 +27,10 @@ const SettingsContainer = () => {
     if (!currentUser) return;
 
     const {image, username, bio, email} = currentUser;
-    setImage(image ? image : ``);
-    setUsername(username);
-    setBio(bio ? bio : ``);
-    setEmail(email);
+    setImageState(image || ``);
+    setUsernameState(username);
+    setBioState(bio || ``);
+    setEmailState(email);
   }, [currentUser]);
 
   useEffect(() => {
@@ -40,12 +40,10 @@ const SettingsContainer = () => {
     setIsSuccessFullSubmit(true);
   }, [data, dispatch]);
 
-
-
   const handelFormSubmit = (evt) => {
     evt.preventDefault();
     setUpdatedUserData({
-      user: {...currentUser, image, username, bio, email, password},
+      user: {...currentUser, imageState, usernameState, bioState, emailState, passwordState},
     });
     doRequest();
   };
@@ -56,26 +54,26 @@ const SettingsContainer = () => {
   };
 
   if (isSuccessFullLogout || isSuccessFullSubmit) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   return !currentUser ? null : (
     <Settings
       isLoading={isLoading}
       error={error}
-      image={image}
-      setImage={setImage}
-      username={username}
-      setUsername={setUsername}
-      bio={bio}
-      setBio={setBio}
-      email={email}
-      setEmail={setEmail}
-      password={password}
-      setPassword={setPassword}
+      image={imageState}
+      setImage={setImageState}
+      username={usernameState}
+      setUsername={setUsernameState}
+      bio={bioState}
+      setBio={setBioState}
+      email={emailState}
+      setEmail={setEmailState}
+      password={passwordState}
+      setPassword={setPasswordState}
       onFormSubmit={handelFormSubmit}
       onButtonLogoutClick={handleButtonLogoutClick} />
   );
 };
 
-export default SettingsContainer; 
+export default SettingsContainer;

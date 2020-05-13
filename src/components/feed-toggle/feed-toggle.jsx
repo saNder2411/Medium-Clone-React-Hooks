@@ -20,12 +20,13 @@ const FeedToggle = ({tag}) => {
           </NavLink>
         </li>
         {!tag ? null : (
-        <li className="nav-item">
-          <NavLink className="nav-link" to={`/tags/${tag}`}>
-            <i className="ion-pound"></i>
-            {tag}
-          </NavLink>
-        </li>)}
+          <li className="nav-item">
+            <NavLink className="nav-link" to={`/tags/${tag}`}>
+              <i className="ion-pound" />
+              {tag}
+            </NavLink>
+          </li>
+        )}
       </ul>
     </div>
   );

@@ -39,8 +39,7 @@ const AuthContainer = ({match: {path}}) => {
       onUsernameChange={setUsername}
       onEmailChange={setEmail}
       onPasswordChange={setPassword}
-      onFormSubmit={handleFormSubmit}
-    />
+      onFormSubmit={handleFormSubmit} />
   );
 };
 

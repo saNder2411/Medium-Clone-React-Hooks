@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, Fragment} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Redirect} from 'react-router-dom';
 
 import useService from '../../hooks/use-service/use-service';
@@ -24,14 +24,14 @@ const EditArticle = ({match: {params}}) => {
 
     setIsSuccessFullSubmit(true);
   }, [data]);
-  
+
   const requestToUpdateArticle = (updatedArticle) => {
     setUpdatedArticleData(updatedArticle);
     doRequest();
   };
 
   if (isLoggedIn === false) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   if (isSuccessFullSubmit) {
@@ -39,7 +39,7 @@ const EditArticle = ({match: {params}}) => {
   }
 
   return (
-    <Fragment>
+    <>
       <LoadingDataView isLoading={isLoadingEditableArticle} error={editableArticleError} />
       {!hasEditableArticleData ? null : (
         <ArticleForm
@@ -48,7 +48,7 @@ const EditArticle = ({match: {params}}) => {
           initialValues={initialValues}
           onFormSubmit={requestToUpdateArticle} />
       )}
-    </Fragment>
+    </>
   );
 };
 

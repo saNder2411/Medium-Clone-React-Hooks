@@ -9,10 +9,10 @@ const AddToFavorite = ({isFavorite, favoritesCount, articleSlug}) => {
 
   const [{isLoading, data}, doRequest] = useService(serviceMethod, articleSlug);
   const buttonClasses = classNames({
-    'btn': true,
-    'btn-sm': true,
-    'btn-primary': isFavoriteState,
-    'btn-outline-primary': !isFavoriteState,
+    "btn": true,
+    "btn-sm": true,
+    "btn-primary": isFavoriteState,
+    "btn-outline-primary": !isFavoriteState,
   });
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment, useContext, useState} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
 import useService from '../../hooks/use-service/use-service';
@@ -40,14 +40,18 @@ const ArticleContainer = ({match: {params}}) => {
     return <Redirect to="/" />;
   }
 
+  const articleProps = {title, author, createdAt, body, tagList, slug};
+
   return (
-    <Fragment>
+    <>
       <LoadingDataView isLoading={isLoading} error={error} />
       {!hasData ? null : (
         <Article
-          {...{title, author, createdAt, body, tagList, slug, isAuthor: getIsAuthor()}}
-          onDeleteButtonClick={doRequestDeleteArticle} />)}
-    </Fragment>
+          {...articleProps}
+          isAuthor={getIsAuthor()}
+          onDeleteButtonClick={doRequestDeleteArticle} />
+      )}
+    </>
   );
 };
 

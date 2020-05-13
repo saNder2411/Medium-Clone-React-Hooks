@@ -3,25 +3,24 @@ import Errors from '../errors/errors';
 
 
 const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
-  const [title, setTitle] = useState(``);
-  const [body, setBody] = useState(``);
-  const [description, setDescription] = useState(``);
-  const [tagList, setTagList] = useState(``);
+  const [titleState, setTitleState] = useState(``);
+  const [bodyState, setBodyState] = useState(``);
+  const [descriptionState, setDescriptionState] = useState(``);
+  const [tagListState, setTagListState] = useState(``);
 
   useEffect(() => {
     if (!initialValues) return;
 
     const {title, description, body, tagList} = initialValues;
-    setTitle(title);
-    setBody(body);
-    setDescription(description);
-    setTagList(tagList.join(` `));
-
-  }, [initialValues])
+    setTitleState(title);
+    setBodyState(body);
+    setDescriptionState(description);
+    setTagListState(tagList.join(` `));
+  }, [initialValues]);
 
   const handelFormSubmit = (evt) => {
     evt.preventDefault();
-    const article = {title, description, body, tagList}
+    const article = {titleState, descriptionState, bodyState, tagListState};
     onFormSubmit(article);
   };
 
@@ -40,8 +39,8 @@ const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Article title"
-                    value={title}
-                    onChange={(evt) => setTitle(evt.target.value)} />
+                    value={titleState}
+                    onChange={(evt) => setTitleState(evt.target.value)} />
                 </fieldset>
 
                 <fieldset className="form-group">
@@ -49,8 +48,8 @@ const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="What is this article about?"
-                    value={description}
-                    onChange={(evt) => setDescription(evt.target.value)} />
+                    value={descriptionState}
+                    onChange={(evt) => setDescriptionState(evt.target.value)} />
                 </fieldset>
 
                 <fieldset className="form-group">
@@ -58,9 +57,8 @@ const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
                     className="form-control"
                     rows="8"
                     placeholder="Write your article (in markdown)"
-                    value={body}
-                    onChange={(evt) => setBody(evt.target.value)} >
-                  </textarea>
+                    value={bodyState}
+                    onChange={(evt) => setBodyState(evt.target.value)} />
                 </fieldset>
 
                 <fieldset className="form-group">
@@ -68,8 +66,8 @@ const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Enter tags"
-                    value={tagList}
-                    onChange={(evt) => setTagList(evt.target.value)} />
+                    value={tagListState}
+                    onChange={(evt) => setTagListState(evt.target.value)} />
                 </fieldset>
                 <fieldset className="form-group">
                   <button
@@ -89,4 +87,3 @@ const ArticleForm = ({isLoading, error, initialValues, onFormSubmit}) => {
 };
 
 export default ArticleForm;
-

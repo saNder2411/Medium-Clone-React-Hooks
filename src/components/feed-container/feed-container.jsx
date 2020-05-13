@@ -16,7 +16,6 @@ const FeedContainer = ({children}) => {
       </div>
     </div>
   );
-
 };
 
 export default FeedContainer;

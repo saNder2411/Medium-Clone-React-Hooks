@@ -9,21 +9,18 @@ import TagFeedContent from '../../components/tag-feed-content/tag-feed-content';
 import PopularTags from '../../components/popular-tags/popular-tags';
 
 
-const GlobalFeed = () => {
-
-  return (
-    <div className="home-page">
-      <FeedBanner />
-      <FeedContainer>
-        <Switch>
-          <Route exact path="/" component={GlobalFeedContent} />
-          <Route path="/feed" component={YourFeedContent} />
-          <Route path="/tags/:slug" component={TagFeedContent} />
-        </Switch>
-        <PopularTags />
-      </FeedContainer>
-    </div>
-  );
-};
+const GlobalFeed = () => (
+  <div className="home-page">
+    <FeedBanner />
+    <FeedContainer>
+      <Switch>
+        <Route exact path="/" component={GlobalFeedContent} />
+        <Route path="/feed" component={YourFeedContent} />
+        <Route path="/tags/:slug" component={TagFeedContent} />
+      </Switch>
+      <PopularTags />
+    </FeedContainer>
+  </div>
+);
 
 export default GlobalFeed;

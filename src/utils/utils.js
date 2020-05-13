@@ -5,9 +5,7 @@ export const LIMIT = 10;
 const Month = [`January`, `February`, `March`, `April`, `May`, `June`,
   `July`, `August`, `September`, `October`, `November`, `December`];
 
-export const range = (start, end) => {
-  return [...Array(end).keys()].map((it) => it + start);
-};
+export const range = (start, end) => [...Array(end).keys()].map((it) => it + start);
 
 export const getPagination = (search) => {
   const parseSearch = parse(search);

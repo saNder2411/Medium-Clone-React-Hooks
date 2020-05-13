@@ -11,7 +11,7 @@ const useEditableArticle = (urlSlug) => {
     if (!data) return;
 
     const {title, description, body, tagList} = data.article;
-    setInitialValues({title, description, body, tagList})
+    setInitialValues({title, description, body, tagList});
   }, [data]);
 
   return [{isLoading, initialValues, error}];

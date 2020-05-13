@@ -8,22 +8,20 @@ import EditArticle from '../pages/edit-article/edit-article';
 import SettingsContainer from '../containers/settings-container/settings-container';
 import UserProfile from '../pages/user-profile/user-profile';
 
-const Routes = () => {
-  return (
-    <Switch>
-      <Route exact path="/" component={GlobalFeed} /> 
-      <Route path="/feed" component={GlobalFeed} />
-      <Route path="/tags/:slug" component={GlobalFeed} />
-      <Route path="/settings" component={SettingsContainer} />
-      <Route path="/profiles/:slug" component={UserProfile} />
-      <Route path="/profiles/:slug/favorites" component={UserProfile} />
-      <Route path="/login" component={AuthContainer} />
-      <Route path="/register" component={AuthContainer} />
-      <Route exact path="/article/new" component={CreateArticle} />
-      <Route exact path="/article/:slug" component={ArticleContainer} />
-      <Route path="/article/:slug/edit" component={EditArticle} />
-    </Switch>
-  );
-};
+const Routes = () => (
+  <Switch>
+    <Route exact path="/" component={GlobalFeed} />
+    <Route path="/feed" component={GlobalFeed} />
+    <Route path="/tags/:slug" component={GlobalFeed} />
+    <Route path="/settings" component={SettingsContainer} />
+    <Route path="/profiles/:slug" component={UserProfile} />
+    <Route path="/profiles/:slug/favorites" component={UserProfile} />
+    <Route path="/login" component={AuthContainer} />
+    <Route path="/register" component={AuthContainer} />
+    <Route exact path="/article/new" component={CreateArticle} />
+    <Route exact path="/article/:slug" component={ArticleContainer} />
+    <Route path="/article/:slug/edit" component={EditArticle} />
+  </Switch>
+);
 
 export default Routes;

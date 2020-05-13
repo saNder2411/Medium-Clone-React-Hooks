@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import UserArticles from '../user-articles/user-articles';
 
 
-const UserProfileContent = ({ image, username, bio }) => (
+const UserProfileContent = ({image, username, bio}) => (
   <>
     <div className="user-info">
       <div className="container">
