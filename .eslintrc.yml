@@ -28,5 +28,7 @@ rules:
   no-shadow: 0
   padded-blocks: ["error", { "classes": "always" }]
   arrow-body-style: 0
+  react/state-in-constructor: 0
+  react/static-property-placement: 0
 
 
