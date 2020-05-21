@@ -2,9 +2,9 @@ env:
   browser: true
   es6: true
 extends:
-  - airbnb
-  - airbnb/hooks
-  - react-app
+  - 'airbnb'
+  - 'airbnb/hooks'
+  - 'react-app'
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
@@ -26,5 +26,7 @@ rules:
   react/jsx-closing-bracket-location: [0, "props-aligned"]
   react/jsx-props-no-spreading: [0, "explicitSpread"]
   no-shadow: 0
+  padded-blocks: ["error", { "classes": "always" }]
+  arrow-body-style: 0
 
 

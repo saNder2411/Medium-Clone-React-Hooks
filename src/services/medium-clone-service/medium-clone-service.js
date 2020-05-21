@@ -1,6 +1,7 @@
 import createAPIService from '../create-api-service/create-api-service';
 
 export default class MediumCloneService {
+
   _baseUrl = `https://conduit.productionready.io/api`;
 
   _API = createAPIService(this._baseUrl);
@@ -106,4 +107,5 @@ export default class MediumCloneService {
 
     return res;
   };
+
 }

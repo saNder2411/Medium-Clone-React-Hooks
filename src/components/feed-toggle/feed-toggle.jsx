@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
 const FeedToggle = ({tag}) => {
+
   const [{isLoggedIn}] = useContext(CurrentUserContext);
   const yourFeedLinkPath = isLoggedIn ? `/feed` : `/register`;
 

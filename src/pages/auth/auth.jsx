@@ -5,6 +5,7 @@ import {LOGIN_PATH} from '../../utils/utils';
 
 
 const Auth = (props) => {
+
   const {path, username, email, password, isLoading, error,
     onUsernameChange, onEmailChange, onPasswordChange, onFormSubmit} = props;
 

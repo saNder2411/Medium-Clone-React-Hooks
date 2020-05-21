@@ -3,6 +3,7 @@ import useService from '../../hooks/use-service/use-service';
 import useCheckCurrentUser from '../../hooks/use-check-current-user/use-check-current-user';
 
 const CurrentUserChecker = ({children}) => {
+
   const [token] = useLocalStorage(`token`);
   const [{data}, doRequest] = useService(`getCurrentUser`);
 

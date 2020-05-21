@@ -10,6 +10,7 @@ const initialState = {
 const CurrentUserContext = createContext();
 
 const CurrentUserProvider = ({children}) => {
+
   const value = useReducer(currentUserReducer, initialState);
 
   return (

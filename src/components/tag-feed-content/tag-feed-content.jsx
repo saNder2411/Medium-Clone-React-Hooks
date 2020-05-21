@@ -11,6 +11,7 @@ import Pagination from '../pagination/pagination';
 
 
 const TagFeedContent = ({location: {search}, match: {url, params}}) => {
+
   const {currentPage, offset} = getPagination(search);
   const tag = params.slug;
   const stringifiedUrlParams = stringify({limit: LIMIT, offset, tag});

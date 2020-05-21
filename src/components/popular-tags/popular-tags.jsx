@@ -5,6 +5,7 @@ import LoadingDataView from '../loading-data-view/loading-data-view';
 
 
 const PopularTags = () => {
+
   const [{isLoading, data, error}, doRequest] = useService(`getTags`);
   const hasData = !(isLoading || error) && data;
 

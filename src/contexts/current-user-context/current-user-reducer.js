@@ -2,6 +2,7 @@ import CurrentUserActionTypes from './current-user-action-types';
 
 
 const currentUserReducer = (state, action) => {
+
   switch (action.type) {
     case CurrentUserActionTypes.FETCH_USER_REQUEST:
       return {...state, isLoading: true};

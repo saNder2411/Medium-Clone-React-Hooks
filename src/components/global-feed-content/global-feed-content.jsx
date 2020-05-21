@@ -11,6 +11,7 @@ import Pagination from '../pagination/pagination';
 
 
 const GlobalFeedContent = ({location: {search}, match: {url}}) => {
+
   const {currentPage, offset} = getPagination(search);
   const stringifiedUrlParams = stringify({limit: LIMIT, offset});
   const [{isLoading, data, error}, doRequest] = useService(`getAllArticles`, stringifiedUrlParams);

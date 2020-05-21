@@ -3,6 +3,7 @@ import Errors from '../../components/errors/errors';
 
 
 const Settings = (props) => {
+
   const {isLoading, error, image, setImage, username, setUsername, bio, setBio,
     email, setEmail, password, setPassword, onFormSubmit, onButtonLogoutClick} = props;
 

@@ -10,6 +10,7 @@ import Settings from '../../pages/settings/settings';
 
 
 const SettingsContainer = () => {
+
   const [{currentUser}, dispatch] = useContext(CurrentUserContext);
   const [imageState, setImageState] = useState(``);
   const [usernameState, setUsernameState] = useState(``);

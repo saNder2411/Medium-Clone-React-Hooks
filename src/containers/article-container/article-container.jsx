@@ -9,6 +9,7 @@ import Article from '../../pages/article/article';
 
 
 const ArticleContainer = ({match: {params}}) => {
+
   const {slug: urlSlug} = params;
   const [{isLoading, data, error}, doRequest] = useService(`getArticle`, urlSlug);
 

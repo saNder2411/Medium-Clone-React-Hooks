@@ -10,6 +10,7 @@ import FeedArticles from "../feed-articles/feed-articles";
 import Pagination from "../pagination/pagination";
 
 const getStringifiedUrlParams = ({username, offset, isFavorites}) => {
+
   const params = isFavorites
     ? {limit: LIMIT, offset, favorited: username}
     : {limit: LIMIT, offset, author: username};
@@ -18,6 +19,7 @@ const getStringifiedUrlParams = ({username, offset, isFavorites}) => {
 };
 
 const UserArticles = ({username, location: {pathname, search}}) => {
+
   const isFavorites = pathname.includes(`favorites`);
   const {currentPage, offset} = getPagination(search);
   const stringifiedUrlParams = getStringifiedUrlParams({username, offset, isFavorites});

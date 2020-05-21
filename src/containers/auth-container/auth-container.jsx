@@ -6,6 +6,7 @@ import useSuccessFullSubmit from '../../hooks/use-success-full-submit/use-succes
 
 
 const AuthContainer = ({match: {path}}) => {
+
   const [username, setUsername] = useState(``);
   const [email, setEmail] = useState(``);
   const [password, setPassword] = useState(``);

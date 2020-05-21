@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/current-user-context/current-user-context';
 
 const TopBar = () => {
+
   const [{isLoggedIn, currentUser}] = useContext(CurrentUserContext);
   const userImage = (isLoggedIn && currentUser.image) || `https://static.productionready.io/images/smiley-cyrus.jpg`;
 

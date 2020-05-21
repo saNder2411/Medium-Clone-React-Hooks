@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import useService from '../../hooks/use-service/use-service';
 
 const AddToFavorite = ({isFavorite, favoritesCount, articleSlug}) => {
+
   const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
   const [favoritesCountState, setFavoritesCountState] = useState(favoritesCount);
   const serviceMethod = isFavoriteState ? `deleteOffFavoriteArticle` : `addToFavoriteArticle`;

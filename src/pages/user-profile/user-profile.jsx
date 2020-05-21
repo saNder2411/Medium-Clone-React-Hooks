@@ -4,6 +4,7 @@ import LoadingDataView from '../../components/loading-data-view/loading-data-vie
 import UserProfileContent from '../../components/user-profile-content/user-profile-content';
 
 const UserProfile = ({match: {params}}) => {
+
   const {slug: urlSlug} = params;
   const [{isLoading, data, error}, doRequest] = useService(`getUserProfiles`, urlSlug);
   const {image = ``, username = ``, bio = ``} = data ? data.profile : {};

@@ -8,6 +8,7 @@ const Month = [`January`, `February`, `March`, `April`, `May`, `June`,
 export const range = (start, end) => [...Array(end).keys()].map((it) => it + start);
 
 export const getPagination = (search) => {
+
   const parseSearch = parse(search);
   const currentPage = parseSearch.page ? +parseSearch.page : 1;
   const offset = currentPage * 10 - LIMIT;
@@ -16,6 +17,7 @@ export const getPagination = (search) => {
 };
 
 export const parseDateToString = (date) => {
+
   const day = new Date(date).getDate();
   const month = new Date(date).getMonth();
   const year = new Date(date).getFullYear();

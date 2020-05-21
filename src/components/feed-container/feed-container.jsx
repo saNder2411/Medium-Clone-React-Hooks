@@ -2,6 +2,7 @@ import React from 'react';
 
 
 const FeedContainer = ({children}) => {
+
   const [Content, PopularTags] = children;
 
   return (

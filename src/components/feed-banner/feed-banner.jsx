@@ -10,4 +10,5 @@ const FeedBanner = () => (
   </div>
 );
 
+
 export default FeedBanner;

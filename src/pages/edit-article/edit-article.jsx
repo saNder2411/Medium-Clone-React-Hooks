@@ -10,6 +10,7 @@ import ArticleForm from '../../components/article-from/article-from';
 
 
 const EditArticle = ({match: {params}}) => {
+
   const {slug: urlSlug} = params;
   const [{isLoading: isLoadingEditableArticle, initialValues, error: editableArticleError}] = useEditableArticle(urlSlug);
   const hasEditableArticleData = !(isLoadingEditableArticle || editableArticleError) && initialValues;

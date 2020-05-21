@@ -4,6 +4,7 @@ import {currentUserRequest, currentUserAuthorized, currentUserUnauthorized} from
   '../../contexts/current-user-context/current-user-action-creator';
 
 const useCheckCurrentUser = (token, data, doRequest) => {
+
   const [, dispatch] = useContext(CurrentUserContext);
   useEffect(() => {
     if (!token) {
