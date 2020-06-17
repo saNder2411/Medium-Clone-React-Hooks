@@ -30,6 +30,7 @@ export default class MediumCloneService {
     return res;
   };
 
+
   authorizesUser = async (url, userAuthData) => {
     const res = await this._postResource(url, userAuthData);
 
