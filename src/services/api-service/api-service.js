@@ -4,10 +4,9 @@ export default class ApiService {
     this._apiProvider = apiProvider;
   }
 
-  authorizesUser = async (url, userAuthData) => {
-    const res = await this._apiProvider.postResource(url, userAuthData);
-    return res;
-  };
+  get authorizesUser() {
+    return this._apiProvider.postResource;
+  }
 
   getCurrentUser = async () => {
     const res = await this._apiProvider.getResource(`/user`);
